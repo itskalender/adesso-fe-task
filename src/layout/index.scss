@@ -1,0 +1,28 @@
+.layout {
+  height: 95vh;
+
+  padding: 32px;
+  margin: 16px;
+
+  background-color: rgb(238, 238, 238);
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 32px;
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .nav__item {
+        list-style: none;
+
+        margin-left: 16px;
+      }
+    }
+  }
+}
