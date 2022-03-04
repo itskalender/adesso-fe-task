@@ -6,13 +6,17 @@ import Home from './components/Home';
 import Units from './components/Units';
 import UnitDetails from './components/UnitDetails';
 
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 import './App.scss';
 
 function App() {
-  const page = useSelector(state => state.currentState.page);
+  const pageTitle = useSelector(state => state.currentState.pageTitle);
 
   return (
-    <Layout page={page}>
+    <Layout pageTitle={pageTitle}>
       <Routes>
         <Route path="/unit-details" element={<UnitDetails />} />
         <Route path="/units" element={<Units />} />

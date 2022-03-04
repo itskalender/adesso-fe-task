@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { changePageTitle } from '../../store/actionCreators';
-
+import { startPageTitleChange } from '../../store/actionCreators';
 import logo from '../../assets/images/aoe_logo.png';
 
 import './index.scss';
@@ -11,7 +10,7 @@ function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(changePageTitle('Home Page'));
+    dispatch(startPageTitleChange('Home Page'));
   }, [dispatch]);
 
   return (

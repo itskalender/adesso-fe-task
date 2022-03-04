@@ -1,16 +1,28 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { changePageTitle } from '../../store/actionCreators';
+import Ages from '../Ages';
+import Costs from '../Costs';
+import List from '../List';
+
+import { startPageTitleChange } from '../../store/actionCreators';
+
+import './index.scss';
 
 function Units() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(changePageTitle('Units Page'));
+    dispatch(startPageTitleChange('Units Page'));
   }, [dispatch]);
 
-  return <div>Units</div>;
+  return (
+    <div className="units">
+      <Ages />
+      <Costs />
+      <List />
+    </div>
+  );
 }
 
 export default Units;

@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 
 import './index.scss';
 
-function Layout({ children, page }) {
+function Layout({ children, pageTitle }) {
   return (
     <div className="layout">
       <header className="header">
-        <div className="header__content">{page}</div>
+        <h1 className="header__title">{pageTitle}</h1>
         <nav className="header__nav">
           <ul className="nav">
             <li className="nav__item">

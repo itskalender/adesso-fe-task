@@ -1,0 +1,16 @@
+.wood {
+  display: flex;
+  align-items: center;
+
+  > div:first-of-type {
+    width: 5%;
+
+    margin-right: 64px;
+  }
+
+  > span:last-of-type {
+    width: 30%;
+
+    margin-right: 32px;
+  }
+}
