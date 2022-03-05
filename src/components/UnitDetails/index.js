@@ -1,78 +1,80 @@
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+
+import { getUnitData } from '../../utils';
+
 import './index.scss';
 
 function UnitDetails() {
   const { unit } = useParams();
-
-  const unitData = useSelector(state => {
-    const upperCaseUnitName = unit
-      .split(' ')
-      .map(word => word[0].toUpperCase() + word.slice(1))
-      .join(' ');
-
-    const selectedUnit = state.units.find(
-      unit => unit.name === upperCaseUnitName
-    );
-    console.log(selectedUnit);
-    return selectedUnit;
-  });
+  const unitData = useSelector(state => getUnitData(state, unit));
 
   return (
     <div className="unit-details">
-      <table className="unit-details__table">
-        <tbody>
-          <tr>
-            <td>ID</td>
-            <td>{unitData.id}</td>
-          </tr>
-          <tr>
-            <td>Name</td>
-            <td>{unitData.name}</td>
-          </tr>
-          <tr>
-            <td>Description</td>
-            <td>{unitData.description}</td>
-          </tr>
-          <tr>
-            <td>Min. Required Age</td>
-            <td>{unitData.age}</td>
-          </tr>
-          <tr>
-            <td>Wood Cost</td>
-            <td>{unitData.cost.Wood}</td>
-          </tr>
-          <tr>
-            <td>Food Cost</td>
-            <td>{unitData.cost.Food}</td>
-          </tr>
-          <tr>
-            <td>Gold Cost</td>
-            <td>{unitData.cost.Gold}</td>
-          </tr>
-          <tr>
-            <td>Build Time</td>
-            <td>{unitData.build_time}</td>
-          </tr>
-          <tr>
-            <td>Reload Time</td>
-            <td>{unitData.reload_time}</td>
-          </tr>
-          <tr>
-            <td>Hit Points</td>
-            <td>{unitData.hit_points}</td>
-          </tr>
-          <tr>
-            <td>Attack</td>
-            <td>{unitData.attack}</td>
-          </tr>
-          <tr>
-            <td>Accuracy</td>
-            <td>{unitData.accuracy}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="unit-details__table">
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableBody>
+              <TableRow>
+                <TableCell>Id</TableCell>
+                <TableCell>{unitData.id}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Name</TableCell>
+                <TableCell>{unitData.name}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Description</TableCell>
+                <TableCell>{unitData.description}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Min. Required Age</TableCell>
+                <TableCell>{unitData.age}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Wood Cost</TableCell>
+                <TableCell>{unitData.cost.Wood}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Food Cost</TableCell>
+                <TableCell>{unitData.cost.Food}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Gold Cost</TableCell>
+                <TableCell>{unitData.cost.Gold}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Build Time</TableCell>
+                <TableCell>{unitData.build_time}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Reload Time</TableCell>
+                <TableCell>{unitData.reload_time}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Hit Points</TableCell>
+                <TableCell>{unitData.hit_points}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Attack</TableCell>
+                <TableCell>{unitData.attack}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Accuracy</TableCell>
+                <TableCell>{unitData.accuracy}</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
     </div>
   );
 }

@@ -23,9 +23,8 @@ import { useTheme } from '@mui/material/styles';
 
 import './index.scss';
 
-function TablePaginationActions(props) {
+function TablePaginationActions({ count, page, rowsPerPage, onPageChange }) {
   const theme = useTheme();
-  const { count, page, rowsPerPage, onPageChange } = props;
 
   const handleFirstPageButtonClick = event => {
     onPageChange(event, 0);
@@ -84,58 +83,60 @@ function TablePaginationActions(props) {
     </Box>
   );
 }
+
+function getFilteredUnits(state) {
+  return state.units.filter(u => {
+    const { age: selectedAge } = state.currentState.filters;
+    const {
+      wood: woodRange,
+      food: foodRange,
+      gold: goldRange,
+    } = state.currentState.filters.costs;
+
+    let ageFilter = u.age === selectedAge;
+    let woodFilter = true;
+    let foodFilter = true;
+    let goldFilter = true;
+
+    if (selectedAge === 'All') {
+      ageFilter = true;
+    }
+
+    if (u.cost && u.cost.Wood) {
+      woodFilter = u.cost.Wood <= woodRange[1] && u.cost.Wood >= woodRange[0];
+    }
+
+    if (u.cost && u.cost.Food) {
+      foodFilter = u.cost.Food <= foodRange[1] && u.cost.Food >= foodRange[0];
+    }
+
+    if (u.cost && u.cost.Gold) {
+      goldFilter = u.cost.Gold <= goldRange[1] && u.cost.Gold >= goldRange[0];
+    }
+
+    return ageFilter && woodFilter && foodFilter && goldFilter;
+  });
+}
+
+function getUnitCost(unit) {
+  const hasCost = unit.cost !== null;
+  const cost = [];
+
+  if (hasCost) {
+    for (let [key, value] of Object.entries(unit.cost)) {
+      const str = `${key}: ${value}`;
+      cost.push(str);
+    }
+  }
+
+  return cost.join(', ');
+}
+
 function List() {
-  const unitList = useSelector(state =>
-    state.units.filter(u => {
-      const { age: selectedAge } = state.currentState.filters;
-      const {
-        wood: woodRange,
-        food: foodRange,
-        gold: goldRange,
-      } = state.currentState.filters.costs;
-
-      let ageFilter = u.age === selectedAge;
-      let woodFilter = true;
-      let foodFilter = true;
-      let goldFilter = true;
-
-      if (selectedAge === 'All') {
-        ageFilter = true;
-      }
-
-      if (u.cost && u.cost.Wood) {
-        woodFilter = u.cost.Wood <= woodRange[1] && u.cost.Wood >= woodRange[0];
-      }
-
-      if (u.cost && u.cost.Food) {
-        foodFilter = u.cost.Food <= foodRange[1] && u.cost.Food >= foodRange[0];
-      }
-
-      if (u.cost && u.cost.Gold) {
-        goldFilter = u.cost.Gold <= goldRange[1] && u.cost.Gold >= goldRange[0];
-      }
-
-      return ageFilter && woodFilter && foodFilter && goldFilter;
-    })
-  );
+  const unitList = useSelector(getFilteredUnits);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const getUnitCost = unit => {
-    const hasCost = unit.cost !== null;
-    const cost = [];
-
-    if (hasCost) {
-      for (let [key, value] of Object.entries(unit.cost)) {
-        const str = `${key}: ${value}`;
-        cost.push(str);
-      }
-    }
-
-    return cost.join(', ');
-  };
-
-  // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - unitList.length) : 0;
 
@@ -215,85 +216,85 @@ function List() {
   );
 }
 
-// function List() {
-//   const unitList = useSelector(state =>
-//     state.units.filter(u => {
-//       const { age: selectedAge } = state.currentState.filters;
-//       const {
-//         wood: woodRange,
-//         food: foodRange,
-//         gold: goldRange,
-//       } = state.currentState.filters.costs;
-
-//       let ageFilter = u.age === selectedAge;
-//       let woodFilter = true;
-//       let foodFilter = true;
-//       let goldFilter = true;
-
-//       if (selectedAge === 'All') {
-//         ageFilter = true;
-//       }
-
-//       if (u.cost && u.cost.Wood) {
-//         woodFilter = u.cost.Wood <= woodRange[1] && u.cost.Wood >= woodRange[0];
-//       }
-
-//       if (u.cost && u.cost.Food) {
-//         foodFilter = u.cost.Food <= foodRange[1] && u.cost.Food >= foodRange[0];
-//       }
-
-//       if (u.cost && u.cost.Gold) {
-//         goldFilter = u.cost.Gold <= goldRange[1] && u.cost.Gold >= goldRange[0];
-//       }
-
-//       return ageFilter && woodFilter && foodFilter && goldFilter;
-//     })
-//   );
-
-//   const getUnitCost = unit => {
-//     const hasCost = unit.cost !== null;
-//     const cost = [];
-
-//     if (hasCost) {
-//       for (let [key, value] of Object.entries(unit.cost)) {
-//         const str = `${key}: ${value}`;
-//         cost.push(str);
-//       }
-//     }
-
-//     return cost.join(', ');
-//   };
-
-//   return (
-//     <div className="list">
-//       <h2 className="list__title">List</h2>
-//       <table className="list__table">
-//         <thead>
-//           <tr>
-//             <th>Id</th>
-//             <th>Name</th>
-//             <th>Age</th>
-//             <th>Costs</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {unitList.map(unit => (
-//             <tr key={unit.id}>
-//               <td>{unit.id}</td>
-//               <td>
-//                 <Link to={`/units/${unit.name.toLowerCase()}`}>
-//                   {unit.name}
-//                   <NorthEastIcon sx={{ fontSize: '16px' }} />
-//                 </Link>
-//               </td>
-//               <td>{unit.age}</td>
-//               <td>{getUnitCost(unit)}</td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-//     </div>
-//   );
-// }
-
 export default List;
+
+/* function List() {
+  const unitList = useSelector(state =>
+    state.units.filter(u => {
+      const { age: selectedAge } = state.currentState.filters;
+      const {
+        wood: woodRange,
+        food: foodRange,
+        gold: goldRange,
+      } = state.currentState.filters.costs;
+
+      let ageFilter = u.age === selectedAge;
+      let woodFilter = true;
+      let foodFilter = true;
+      let goldFilter = true;
+
+      if (selectedAge === 'All') {
+        ageFilter = true;
+      }
+
+      if (u.cost && u.cost.Wood) {
+        woodFilter = u.cost.Wood <= woodRange[1] && u.cost.Wood >= woodRange[0];
+      }
+
+      if (u.cost && u.cost.Food) {
+        foodFilter = u.cost.Food <= foodRange[1] && u.cost.Food >= foodRange[0];
+      }
+
+      if (u.cost && u.cost.Gold) {
+        goldFilter = u.cost.Gold <= goldRange[1] && u.cost.Gold >= goldRange[0];
+      }
+
+      return ageFilter && woodFilter && foodFilter && goldFilter;
+    })
+  );
+
+  const getUnitCost = unit => {
+    const hasCost = unit.cost !== null;
+    const cost = [];
+
+    if (hasCost) {
+      for (let [key, value] of Object.entries(unit.cost)) {
+        const str = `${key}: ${value}`;
+        cost.push(str);
+      }
+    }
+
+    return cost.join(', ');
+  };
+
+  return (
+    <div className="list">
+      <h2 className="list__title">List</h2>
+      <table className="list__table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Costs</th>
+          </tr>
+        </thead>
+        <tbody>
+          {unitList.map(unit => (
+            <tr key={unit.id}>
+              <td>{unit.id}</td>
+              <td>
+                <Link to={`/units/${unit.name.toLowerCase()}`}>
+                  {unit.name}
+                  <NorthEastIcon sx={{ fontSize: '16px' }} />
+                </Link>
+              </td>
+              <td>{unit.age}</td>
+              <td>{getUnitCost(unit)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+} */
