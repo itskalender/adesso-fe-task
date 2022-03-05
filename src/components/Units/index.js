@@ -13,7 +13,7 @@ function Units() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(startPageTitleChange('Units Page'));
+    dispatch(startPageTitleChange('Units'));
   }, [dispatch]);
 
   return (

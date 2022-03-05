@@ -1,2 +1,2 @@
 export { getPageTitle } from './app';
-export { getUnitData } from './unit-details';
+export { getUpperCaseUnitName, getUnitData } from './unit-details';

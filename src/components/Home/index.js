@@ -10,7 +10,7 @@ function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(startPageTitleChange('Home Page'));
+    dispatch(startPageTitleChange('Home'));
   }, [dispatch]);
 
   return (

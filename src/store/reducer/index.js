@@ -10,7 +10,7 @@ import {
 const initialState = {
   units: units.units,
   currentState: {
-    pageTitle: 'Home Page',
+    pageTitle: 'Home',
     filters: {
       age: 'All',
       costs: {

@@ -1,21 +1,28 @@
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
+import TableContainer from '@mui/material/TableContainer';
+import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import TableCell from '@mui/material/TableCell';
 
-import { getUnitData } from '../../utils';
+import { startPageTitleChange } from '../../store/actionCreators';
+
+import { getUpperCaseUnitName, getUnitData } from '../../utils';
 
 import './index.scss';
 
 function UnitDetails() {
-  const { unit } = useParams();
-  const unitData = useSelector(state => getUnitData(state, unit));
+  const { unit: unitName } = useParams();
+  const unitData = useSelector(state => getUnitData(state, unitName));
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(startPageTitleChange(getUpperCaseUnitName(unitName)));
+  }, [dispatch, unitName]);
 
   return (
     <div className="unit-details">

@@ -18,9 +18,8 @@
       box-shadow: none;
     }
 
-    td a {
-      display: flex;
-      align-items: center;
+    td a svg {
+      vertical-align: text-top;
     }
 
     td,
