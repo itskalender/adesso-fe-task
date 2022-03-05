@@ -1,8 +1,11 @@
 .home {
-  width: 70%;
-  margin-left: 15%;
+  height: 68vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .logo {
-    width: 100%;
+    width: 80%;
   }
 }

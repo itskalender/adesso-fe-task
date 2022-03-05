@@ -35,7 +35,7 @@ function Cost({ material }) {
   };
 
   return (
-    <div className="wood">
+    <div className={material}>
       <FormGroup>
         <FormControlLabel
           control={

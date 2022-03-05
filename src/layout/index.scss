@@ -1,10 +1,10 @@
-.layout {
-  height: 95vh;
+@use '../style/variables' as v;
 
+.layout {
   padding: 64px;
   margin: 16px;
 
-  background-color: rgb(238, 238, 238);
+  background-color: v.$layout-color;
 
   .header {
     display: flex;

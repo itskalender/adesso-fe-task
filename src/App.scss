@@ -1,3 +1,5 @@
+@use './style/variables' as v;
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,4 +8,15 @@
 
 body {
   font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+  color: v.$link-color;
+  text-decoration-color: v.$link-text-decoration-color;
+
+  // -webkit-text-decoration: underline
+
+  &:hover {
+    text-decoration-color: inherit;
+  }
 }

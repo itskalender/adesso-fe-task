@@ -1,0 +1,26 @@
+@use '../../style/variables' as v;
+
+.list {
+  .list__title {
+    margin-bottom: 8px;
+  }
+
+  .list__table {
+    width: 80%;
+
+    margin-left: 10%;
+
+    > div:first-of-type {
+      background-color: v.$unit-list-background-color;
+
+      border: 1px solid v.$unit-list-border-color;
+
+      box-shadow: none;
+    }
+
+    td a {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

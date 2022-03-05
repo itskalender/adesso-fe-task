@@ -22,7 +22,7 @@ function Ages() {
     <div className="ages">
       <h2 className="ages__title">Ages</h2>
       <ToggleButtonGroup
-        color="standard"
+        color="primary"
         value={age}
         exclusive
         onChange={handleAgeChange}
