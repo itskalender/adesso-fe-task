@@ -8,15 +8,15 @@
 
 body {
   font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
-a {
-  color: v.$link-color;
-  text-decoration-color: v.$link-text-decoration-color;
+  a {
+    color: v.$link-color;
+    text-decoration-color: v.$link-text-decoration-color;
 
-  // -webkit-text-decoration: underline
+    // -webkit-text-decoration: underline
 
-  &:hover {
-    text-decoration-color: inherit;
+    &:hover {
+      text-decoration-color: inherit;
+    }
   }
 }
