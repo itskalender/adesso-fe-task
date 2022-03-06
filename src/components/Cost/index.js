@@ -34,6 +34,16 @@ function Cost({ material }) {
     return material[0].toUpperCase() + material.slice(1);
   };
 
+  const renderCostRange = () => {
+    return isCheckboxChecked ? (
+      <div>
+        {range[0]}-{range[1]}
+      </div>
+    ) : (
+      <RemoveIcon />
+    );
+  };
+
   return (
     <div className={material}>
       <FormGroup>
@@ -55,13 +65,7 @@ function Cost({ material }) {
         value={range}
         onChange={handleRangeChange}
       />
-      {isCheckboxChecked ? (
-        <div>
-          {range[0]}-{range[1]}
-        </div>
-      ) : (
-        <RemoveIcon />
-      )}
+      {renderCostRange()}
     </div>
   );
 }
