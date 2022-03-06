@@ -28,7 +28,7 @@ function UnitDetails() {
     <div className="unit-details">
       <div className="unit-details__table">
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <Table sx={{ minWidth: 650 }} aria-label="unit detail table">
             <TableBody>
               <TableRow>
                 <TableCell>Id</TableCell>
