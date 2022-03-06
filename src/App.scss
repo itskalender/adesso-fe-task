@@ -9,6 +9,20 @@
 body {
   font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
+  h1,
+  h2 {
+    font-family: 'Cormorant';
+    color: v.$header-color;
+  }
+
+  h1 {
+    letter-spacing: 2px;
+  }
+
+  h2 {
+    letter-spacing: 1px;
+  }
+
   a {
     color: v.$link-color;
     text-decoration-color: v.$link-text-decoration-color;
