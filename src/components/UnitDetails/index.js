@@ -48,15 +48,15 @@ function UnitDetails() {
               </TableRow>
               <TableRow>
                 <TableCell>Wood Cost</TableCell>
-                <TableCell>{unitData.cost.Wood}</TableCell>
+                <TableCell>{unitData.cost && unitData.cost.Wood}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Food Cost</TableCell>
-                <TableCell>{unitData.cost.Food}</TableCell>
+                <TableCell>{unitData.cost && unitData.cost.Food}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Gold Cost</TableCell>
-                <TableCell>{unitData.cost.Gold}</TableCell>
+                <TableCell>{unitData.cost && unitData.cost.Gold}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Build Time</TableCell>
