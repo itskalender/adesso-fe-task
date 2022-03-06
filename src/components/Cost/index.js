@@ -7,7 +7,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Slider from '@mui/material/Slider';
 import RemoveIcon from '@mui/icons-material/Remove';
 
-import { startRangeChange, startRangeReset } from '../../store/actionCreators';
+import { startRangeChange, startRangeReset } from '../../store/action-creators';
 
 import './index.scss';
 

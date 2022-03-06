@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 
-import { startAgeChange } from '../../store/actionCreators';
+import { startAgeChange } from '../../store/action-creators';
 
 import './index.scss';
 

@@ -1,0 +1,2 @@
+export const AGE_CHANGE_STARTED = 'AGE_CHANGE_STARTED';
+export const AGE_CHANGED = 'AGE_CHANGED';

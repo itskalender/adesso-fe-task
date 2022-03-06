@@ -5,7 +5,7 @@ import Ages from '../Ages';
 import Costs from '../Costs';
 import List from '../List';
 
-import { startPageTitleChange } from '../../store/actionCreators';
+import { startPageTitleChange } from '../../store/action-creators';
 
 import './index.scss';
 

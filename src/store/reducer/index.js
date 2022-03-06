@@ -5,7 +5,7 @@ import {
   AGE_CHANGED,
   RANGE_CHANGED,
   RANGE_RESET,
-} from '../actionTypes';
+} from '../action-types';
 
 const initialState = {
   units: units.units,

@@ -9,7 +9,7 @@ import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 
-import { startPageTitleChange } from '../../store/actionCreators';
+import { startPageTitleChange } from '../../store/action-creators';
 
 import { getUpperCaseUnitName, getUnitData } from '../../utils';
 

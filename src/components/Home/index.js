@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { startPageTitleChange } from '../../store/actionCreators';
-import logo from '../../assets/images/aoe_logo.png';
+import { startPageTitleChange } from '../../store/action-creators';
+import logo from '../../assets/images/aoe-logo.png';
 
 import './index.scss';
 
