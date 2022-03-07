@@ -30,6 +30,10 @@ function UnitDetail() {
     return <NotFound msg="Unit not found" />;
   }
 
+  const checkValue = value => {
+    return value ? value : '-';
+  };
+
   return (
     <div className="unit-detail">
       <div className="unit-detail__table">
@@ -54,35 +58,35 @@ function UnitDetail() {
               </TableRow>
               <TableRow>
                 <TableCell>Wood Cost</TableCell>
-                <TableCell>{unitData.cost && unitData.cost.Wood}</TableCell>
+                <TableCell>{checkValue(unitData.cost?.Wood)}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Food Cost</TableCell>
-                <TableCell>{unitData.cost && unitData.cost.Food}</TableCell>
+                <TableCell>{checkValue(unitData.cost?.Food)}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Gold Cost</TableCell>
-                <TableCell>{unitData.cost && unitData.cost.Gold}</TableCell>
+                <TableCell>{checkValue(unitData.cost?.Gold)}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Build Time</TableCell>
-                <TableCell>{unitData.build_time}</TableCell>
+                <TableCell>{checkValue(unitData.build_time)}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Reload Time</TableCell>
-                <TableCell>{unitData.reload_time}</TableCell>
+                <TableCell>{checkValue(unitData.reload_time)}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Hit Points</TableCell>
-                <TableCell>{unitData.hit_points}</TableCell>
+                <TableCell>{checkValue(unitData.hit_points)}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Attack</TableCell>
-                <TableCell>{unitData.attack}</TableCell>
+                <TableCell>{checkValue(unitData.attack)}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Accuracy</TableCell>
-                <TableCell>{unitData.accuracy}</TableCell>
+                <TableCell>{checkValue(unitData.accuracy)}</TableCell>
               </TableRow>
             </TableBody>
           </Table>
