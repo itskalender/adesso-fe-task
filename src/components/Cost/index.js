@@ -45,10 +45,10 @@ function Cost({ material, img }) {
   const renderCostRange = () => {
     return isCheckboxChecked ? (
       <div>
-        {range[0]}-{range[1]}
+        {range[0]} - {range[1]}
       </div>
     ) : (
-      <RemoveIcon />
+      <RemoveIcon color="action" />
     );
   };
 
