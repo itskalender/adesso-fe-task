@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import Layout from './layout';
 import Home from './components/Home';
 import Units from './components/Units';
-import UnitDetails from './components/UnitDetails';
+import UnitDetail from './components/UnitDetail';
 
 import { getPageTitle } from './utils';
 
@@ -24,7 +24,7 @@ function App() {
   return (
     <Layout pageTitle={pageTitle}>
       <Routes>
-        <Route path="/units/:unit" element={<UnitDetails />} />
+        <Route path="/units/:unit" element={<UnitDetail />} />
         <Route path="/units" element={<Units />} />
         <Route path="/" element={<Home />} />
       </Routes>

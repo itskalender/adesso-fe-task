@@ -15,7 +15,7 @@ import { getUpperCaseUnitName, getUnitData } from '../../utils';
 
 import './index.scss';
 
-function UnitDetails() {
+function UnitDetail() {
   const { unit: unitName } = useParams();
   const unitData = useSelector(state => getUnitData(state, unitName));
   const dispatch = useDispatch();
@@ -25,8 +25,8 @@ function UnitDetails() {
   }, [dispatch, unitName]);
 
   return (
-    <div className="unit-details">
-      <div className="unit-details__table">
+    <div className="unit-detail">
+      <div className="unit-detail__table">
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="unit detail table">
             <TableBody>
@@ -86,4 +86,4 @@ function UnitDetails() {
   );
 }
 
-export default UnitDetails;
+export default UnitDetail;
