@@ -26,15 +26,11 @@ function UnitDetail() {
     dispatch(startPageTitleChange(getUpperCaseUnitName(unitName)));
   }, [dispatch, unitName]);
 
-  if (unitData === undefined) {
-    return <NotFound msg="Unit not found" />;
-  }
-
   const checkValue = value => {
     return value ? value : '-';
   };
 
-  return (
+  return unitData ? (
     <div className="unit-detail">
       <div className="unit-detail__table">
         <TableContainer component={Paper}>
@@ -93,6 +89,8 @@ function UnitDetail() {
         </TableContainer>
       </div>
     </div>
+  ) : (
+    <NotFound msg="Unit not found" />
   );
 }
 
