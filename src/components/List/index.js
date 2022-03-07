@@ -110,16 +110,19 @@ function List() {
 
   const getUnitCost = unit => {
     const hasCost = unit.cost !== null;
-    const cost = [];
 
     if (hasCost) {
+      const cost = [];
+
       for (let [key, value] of Object.entries(unit.cost)) {
         const str = `${key}: ${value}`;
         cost.push(str);
       }
+
+      return cost.join(', ');
     }
 
-    return cost.join(', ');
+    return '-';
   };
 
   return (
