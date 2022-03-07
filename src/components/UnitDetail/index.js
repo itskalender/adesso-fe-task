@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
+import NotFound from '../NotFound';
+
 import TableContainer from '@mui/material/TableContainer';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -23,6 +25,10 @@ function UnitDetail() {
   useEffect(() => {
     dispatch(startPageTitleChange(getUpperCaseUnitName(unitName)));
   }, [dispatch, unitName]);
+
+  if (unitData === undefined) {
+    return <NotFound msg="Unit not found" />;
+  }
 
   return (
     <div className="unit-detail">

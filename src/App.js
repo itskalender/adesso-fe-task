@@ -5,6 +5,7 @@ import Layout from './layout';
 import Home from './components/Home';
 import Units from './components/Units';
 import UnitDetail from './components/UnitDetail';
+import NotFound from './components/NotFound';
 
 import { getPageTitle } from './utils';
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/units/:unit" element={<UnitDetail />} />
         <Route path="/units" element={<Units />} />
         <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
   );
