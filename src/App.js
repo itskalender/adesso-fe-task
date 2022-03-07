@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import Layout from './layout';
+import Layout from './components/Layout';
 import Home from './components/Home';
 import Units from './components/Units';
 import UnitDetail from './components/UnitDetail';
