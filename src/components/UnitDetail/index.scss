@@ -3,10 +3,13 @@
 .unit-detail {
   min-height: 68vh;
 
-  .unit-detail__table {
-    width: 80%;
+  padding-top: 2rem;
 
-    margin-left: 10%;
+  display: flex;
+  justify-content: center;
+
+  .unit-detail__table {
+    width: 60%;
 
     > div:first-of-type {
       background-color: v.$unit-list-background-color;
@@ -19,6 +22,17 @@
     td,
     th {
       padding: 0.5rem;
+
+      text-align: center;
+    }
+
+    tbody tr > td:first-of-type {
+      width: 20%;
+
+      font-weight: 500;
+    }
+    tbody tr > td:last-of-type {
+      width: 80%;
     }
   }
 }
