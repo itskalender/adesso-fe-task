@@ -1,5 +1,7 @@
 import Cost from '../Cost';
 
+import './index.scss';
+
 function Costs() {
   return (
     <div className="costs">
