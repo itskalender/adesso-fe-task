@@ -152,7 +152,7 @@ function List() {
                   <TableCell>
                     <Link to={`/units/${unit.name.toLowerCase()}`}>
                       {unit.name}
-                      <NorthEastIcon sx={{ fontSize: '16px' }} />
+                      <NorthEastIcon sx={{ fontSize: '1rem' }} />
                     </Link>
                   </TableCell>
                   <TableCell>{unit.age}</TableCell>
@@ -160,7 +160,7 @@ function List() {
                 </TableRow>
               ))}
               {emptyRows > 0 && (
-                <TableRow style={{ height: 53 * emptyRows }}>
+                <TableRow style={{ height: 37.013 * emptyRows }}>
                   <TableCell colSpan={6} />
                 </TableRow>
               )}
