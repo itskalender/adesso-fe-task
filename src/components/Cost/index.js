@@ -11,7 +11,7 @@ import { startRangeChange, startRangeReset } from '../../store/action-creators';
 
 import './index.scss';
 
-function Cost({ material }) {
+function Cost({ material, img }) {
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
   const [range, setRange] = useState([0, 200]);
   const dispatch = useDispatch();
@@ -30,8 +30,16 @@ function Cost({ material }) {
     dispatch(startRangeChange(material, newRange));
   };
 
-  const getCheckboxLabel = () => {
-    return material[0].toUpperCase() + material.slice(1);
+  const getCheckboxLabelImg = () => {
+    return (
+      <div className="checkbox-label-container">
+        <img
+          src={img}
+          alt={`${material[0].toUpperCase() + material.slice(1)}`}
+          className="checkbox-label-container__img"
+        />
+      </div>
+    );
   };
 
   const renderCostRange = () => {
@@ -54,7 +62,7 @@ function Cost({ material }) {
               onChange={handleCheckboxChange}
             />
           }
-          label={getCheckboxLabel()}
+          label={getCheckboxLabelImg()}
         />
       </FormGroup>
       <Slider
