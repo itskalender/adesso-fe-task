@@ -130,10 +130,10 @@ function List() {
           <Table sx={{ minWidth: 500 }} aria-label="unit list pagination table">
             <TableHead>
               <TableRow>
-                <TableCell>Id</TableCell>
-                <TableCell>Name</TableCell>
-                <TableCell>Age</TableCell>
-                <TableCell>Costs</TableCell>
+                <TableCell sx={{ width: '10%' }}>Id</TableCell>
+                <TableCell sx={{ width: '30%' }}>Name</TableCell>
+                <TableCell sx={{ width: '30%' }}>Age</TableCell>
+                <TableCell sx={{ width: '30%' }}>Costs</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
