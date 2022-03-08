@@ -9,10 +9,9 @@ import Home from './index';
 describe('Home component', () => {
   const initialState = {};
   const mockStore = configureStore();
+  const store = mockStore(initialState);
 
-  test('shows Age of Empires logo', () => {
-    const store = mockStore(initialState);
-
+  test('renders Age of Empires logo', () => {
     render(
       <Provider store={store}>
         <Home />
